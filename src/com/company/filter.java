@@ -3,12 +3,18 @@ package com.company;
 import java.util.ArrayList;
 
 public class filter {
-    ArrayList<keyandlist> layers = new ArrayList<>();
-    reader r;
-    public filter(String guess, int length) {
-        new reader(length);
-        fill(guess);
 
+    public filter(String guess, int length) {
+        this.length = length;
+        this.guess = guess;
+    }
+    ArrayList<keyandlist> layers = new ArrayList<>();
+    int length;
+    reader r = new reader(5);
+    String guess;
+    public ArrayList<keyandlist> runner() {
+        fill(guess);
+        return layers;
     }
 
     public ArrayList<keyandlist> fill(String c) {
@@ -21,10 +27,9 @@ public class filter {
             } else {
                 layers.get(findIndexofKey(key)).addword(w);
             }
-
         }
         return layers;
-}
+    }
 
     public int findIndexofKey(ArrayList<Integer> key) {
         for (int i = 0; i < layers.size(); i++)
