@@ -10,7 +10,10 @@ public class keyandlist {
         this.key = key;
         this.layor = layor;
     }
-
+    public keyandlist(ArrayList<Integer> key, String w){
+        this.key = key;
+        layor.add(w);
+    }
     public keyandlist() {
     }
 

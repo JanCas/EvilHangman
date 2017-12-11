@@ -4,24 +4,24 @@ import java.util.ArrayList;
 
 public class filter {
     ArrayList<keyandlist> layers = new ArrayList<>();
-    reader r = new reader(4);
-
-    public filter(String guess) {
+    reader r;
+    public filter(String guess, int length) {
+        new reader(length);
         fill(guess);
+
     }
 
     public ArrayList<keyandlist> fill(String c) {
         ArrayList<Integer> key;
-        ArrayList<String> word = new ArrayList<>();
         for (String w : r.words) {
-            word.add(w);
             key = ConvertToKey(w, c);
             if (!haskey(key)) {
-                keyandlist KL = new keyandlist(key, word);
+                keyandlist KL = new keyandlist(key, w);
                 layers.add(KL);
             } else {
                 layers.get(findIndexofKey(key)).addword(w);
             }
+
         }
         return layers;
 }
