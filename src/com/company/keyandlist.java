@@ -3,20 +3,28 @@ package com.company;
 import java.util.ArrayList;
 
 public class keyandlist {
-    String key;
+    ArrayList<Integer> key;
     ArrayList<String> layor = new ArrayList<>();
 
-    public keyandlist(String key, ArrayList<String> layor) {
+    public keyandlist(ArrayList<Integer> key, ArrayList<String> layor) {
         this.key = key;
         this.layor = layor;
     }
 
-    public String getKey() {
+    public keyandlist() {
+    }
+
+
+    public ArrayList<Integer> getKey() {
         return key;
     }
 
-    public void setKey(String key) {
+    public void setKey(ArrayList<Integer> key) {
         this.key = key;
+    }
+
+    public void addword(String w) {
+        layor.add(w);
     }
 
     public ArrayList<String> getLayor() {
