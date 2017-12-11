@@ -6,23 +6,25 @@ public class filter {
 
     ArrayList<keyandlist> layers = new ArrayList<>();
     int length;
-    reader r = new reader(5);
+    ArrayList<String> WordsFiltered = new ArrayList<>();
+    reader r;
     String guess;
 
     public filter(String guess, int length) {
         this.length = length;
         this.guess = guess;
+        r = new reader(length);
     }
 
     public ArrayList<keyandlist> runner() {
-        fill(guess);
+        fill();
         return layers;
     }
 
-    public ArrayList<keyandlist> fill(String c) {
+    public ArrayList<keyandlist> fill() {
         ArrayList<Integer> key;
         for (String w : r.words) {
-            key = ConvertToKey(w, c);
+            key = ConvertToKey(w, guess);
             if (!haskey(key)) {
                 keyandlist KL = new keyandlist(key, w);
                 layers.add(KL);
@@ -57,7 +59,7 @@ public class filter {
         return key;
     }
 
-    public int getBiggest() {
+    public void getBiggest() {
         int maxindex = 0;
         int max = layers.get(0).getLayor().size();
         for (int i = 0; i < layers.size(); i++) {
@@ -66,6 +68,10 @@ public class filter {
                 maxindex = i;
             }
         }
-        return maxindex;
+        WordsFiltered = layers.get(maxindex).getLayor();
+    }
+
+    public void setGuess(String c){
+        this.guess = c;
     }
 }

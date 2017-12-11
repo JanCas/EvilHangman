@@ -10,6 +10,7 @@ public class reader {
     ArrayList<String> words = new ArrayList<>();
 
     public reader(int length) {
+
         try {
             Scanner fileScanner = new Scanner(new File("C:\\Users\\janlc\\OneDrive\\Documents\\GitHub\\EvilHangman\\src\\com\\company\\dictionary.txt"));
             while (fileScanner.hasNextLine()) {
