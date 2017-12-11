@@ -3,7 +3,7 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
-	filter f = new filter("e", 5);
-	f.runner();
+	Runner r = new Runner();
+	r.Asker();
     }
 }

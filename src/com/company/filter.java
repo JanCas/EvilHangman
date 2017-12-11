@@ -4,14 +4,16 @@ import java.util.ArrayList;
 
 public class filter {
 
-    public filter(String guess, int length) {
-        this.length = length;
-        this.guess = guess;
-    }
     ArrayList<keyandlist> layers = new ArrayList<>();
     int length;
     reader r = new reader(5);
     String guess;
+
+    public filter(String guess, int length) {
+        this.length = length;
+        this.guess = guess;
+    }
+
     public ArrayList<keyandlist> runner() {
         fill(guess);
         return layers;
@@ -53,5 +55,17 @@ public class filter {
             else
                 key.add(0);
         return key;
+    }
+
+    public int getBiggest() {
+        int maxindex = 0;
+        int max = layers.get(0).getLayor().size();
+        for (int i = 0; i < layers.size(); i++) {
+            if (max < layers.get(i).getLayor().size()) {
+                max = layers.get(i).getLayor().size();
+                maxindex = i;
+            }
+        }
+        return maxindex;
     }
 }
