@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public class filter {
 
-    ArrayList<keyandlist> layers = new ArrayList<>();
-    int length;
-    ArrayList<String> WordsFiltered = new ArrayList<>();
-    reader r;
-    String guess;
+    public ArrayList<keyandlist> layers = new ArrayList<>();
+    public int length;
+    public ArrayList<String> WordsFiltered = new ArrayList<>();
+    public reader r;
+    public String guess;
 
     public filter(String guess, int length) {
         this.length = length;
@@ -55,7 +55,7 @@ public class filter {
         return key;
     }
 
-    public void getBiggest() {
+    public ArrayList<Integer> getBiggest() {
         int maxindex = 0;
         int max = layers.get(0).getLayor().size();
         for (int i = 0; i < layers.size(); i++) {
@@ -65,6 +65,7 @@ public class filter {
             }
         }
         WordsFiltered = layers.get(maxindex).getLayor();
+        return layers.get(maxindex).getKey();
     }
 
     public void setGuess(String c) {
