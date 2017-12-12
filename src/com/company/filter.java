@@ -14,11 +14,7 @@ public class filter {
         this.length = length;
         this.guess = guess;
         r = new reader(length);
-    }
-
-    public ArrayList<keyandlist> runner() {
         fill();
-        return layers;
     }
 
     public ArrayList<keyandlist> fill() {
@@ -71,7 +67,7 @@ public class filter {
         WordsFiltered = layers.get(maxindex).getLayor();
     }
 
-    public void setGuess(String c){
+    public void setGuess(String c) {
         this.guess = c;
     }
 }

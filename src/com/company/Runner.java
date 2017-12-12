@@ -23,7 +23,7 @@ public class Runner {
         this.guesses = keyboard.nextInt();
 
         System.out.println("Please enter your first guess");
-        this.guess = keyboard.nextLine();
+        this.guess = keyboard.next();
         //
         //if (guess.length() > 1 || isNumeric(guess)) {
         //System.out.println("Please enter a new guess");
@@ -34,6 +34,7 @@ public class Runner {
 
     public void runFilter(){
         for (int i = 0; i < guesses; i++){
+            System.out.println("Got in");
             f.getBiggest();
             setGuess();
             f.setGuess(guess);
