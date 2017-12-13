@@ -38,6 +38,11 @@ public class Runner {
         for (int i = 0; i < guesses; i++) {
             biggestkey = f.getBiggest();
             FillFinalWord(biggestkey);
+            if(!WordInQuestion.contains("-")) {
+                System.out.println("You won congratulations");
+                PrintWordInQuestion();
+                return;
+            }
             f.layers.clear();
             PrintWordInQuestion();
             setGuess();
@@ -80,6 +85,8 @@ public class Runner {
                 if (WordInQuestion.get(i) == "-")
                     WordInQuestion.set(i, guess);
         }
+        if(!WordInQuestion.contains("-"))
+            System.out.println("You won congratulations");
     }
 
 }
