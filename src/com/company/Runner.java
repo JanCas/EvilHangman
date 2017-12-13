@@ -57,6 +57,7 @@ public class Runner {
             }
             f.layers.clear();
             PrintWordInQuestion();
+            System.out.println("You have " + (guesses - (i + 1)) + " remaining");
             setGuess();
             f.setGuess(guess);
             f.fill2();
@@ -89,7 +90,7 @@ public class Runner {
      * with only the letters you already guessed showing
      */
     public void PrintWordInQuestion() {
-        System.out.println("This is your word");
+        System.out.println("This is your word, with the your correct guesses");
         for (String s : WordInQuestion)
             System.out.print(s);
         System.out.println();
