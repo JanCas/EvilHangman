@@ -31,6 +31,20 @@ public class filter {
         return layers;
     }
 
+    public ArrayList<keyandlist> fill2() {
+        ArrayList<Integer> key;
+        for (String w : WordsFiltered) {
+            key = ConvertToKey(w, guess);
+            if (!haskey(key)) {
+                keyandlist KL = new keyandlist(key, w);
+                layers.add(KL);
+            } else {
+                layers.get(findIndexofKey(key)).addword(w);
+            }
+        }
+        return layers;
+    }
+
     public int findIndexofKey(ArrayList<Integer> key) {
         for (int i = 0; i < layers.size(); i++)
             if (layers.get(i).getKey().equals(key))

@@ -9,12 +9,11 @@ public class Runner {
     String guess;
     filter f;
     ArrayList<String> WordInQuestion = new ArrayList<>();
-
+    ArrayList<String> recordedguesses = new ArrayList<String>();
     public Runner() {
         Asker();
         f = new filter(guess, length);
         runFilter();
-
     }
 
     public void Asker() {
@@ -39,16 +38,28 @@ public class Runner {
         for (int i = 0; i < guesses; i++) {
             biggestkey = f.getBiggest();
             FillFinalWord(biggestkey);
+            f.layers.clear();
             PrintWordInQuestion();
             setGuess();
             f.setGuess(guess);
-            f.fill();
+            f.fill2();
         }
+        System.out.println("You ran out of guesses, shame on you");
     }
 
     public void setGuess() {
+        recordedguesses.add(guess);
+        System.out.print("Already taken guesses: ");
+        for(String s : recordedguesses)
+            System.out.print(s + " ");
+        System.out.println();
+
         System.out.println("Type in your next guess");
-        guess = keyboard.nextLine();
+        guess = keyboard.next();
+        while(recordedguesses.contains(guess)) {
+            System.out.println("Please eneter a new guess this is already taken");
+            guess = keyboard.next();
+        }
     }
 
     public void PrintWordInQuestion(){
