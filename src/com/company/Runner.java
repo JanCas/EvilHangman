@@ -10,6 +10,7 @@ public class Runner {
     filter f;
     ArrayList<String> WordInQuestion = new ArrayList<>();
     ArrayList<String> recordedguesses = new ArrayList<String>();
+
     public Runner() {
         Asker();
         f = new filter(guess, length);
@@ -38,7 +39,7 @@ public class Runner {
         for (int i = 0; i < guesses; i++) {
             biggestkey = f.getBiggest();
             FillFinalWord(biggestkey);
-            if(!WordInQuestion.contains("-")) {
+            if (!WordInQuestion.contains("-")) {
                 System.out.println("You won congratulations");
                 PrintWordInQuestion();
                 return;
@@ -55,38 +56,35 @@ public class Runner {
     public void setGuess() {
         recordedguesses.add(guess);
         System.out.print("Already taken guesses: ");
-        for(String s : recordedguesses)
+        for (String s : recordedguesses)
             System.out.print(s + " ");
         System.out.println();
 
         System.out.println("Type in your next guess");
         guess = keyboard.next();
-        while(recordedguesses.contains(guess)) {
+        while (recordedguesses.contains(guess)) {
             System.out.println("Please eneter a new guess this is already taken");
             guess = keyboard.next();
         }
     }
 
-    public void PrintWordInQuestion(){
+    public void PrintWordInQuestion() {
         System.out.println("This is your word");
-        for(String s : WordInQuestion)
+        for (String s : WordInQuestion)
             System.out.print(s);
         System.out.println();
     }
 
     public void FillFinalWord(ArrayList<Integer> key) {
         for (int i = 0; i < key.size(); i++) {
-            if(WordInQuestion.size() <= key.size())
+            if (WordInQuestion.size() < key.size())
                 if (key.get(i) == 0)
                     WordInQuestion.add("-");
                 else
                     WordInQuestion.add(guess);
-            else
-                if (WordInQuestion.get(i) == "-")
+            else if (key.get(i) == 1)
                     WordInQuestion.set(i, guess);
         }
-        if(!WordInQuestion.contains("-"))
-            System.out.println("You won congratulations");
     }
 
 }
