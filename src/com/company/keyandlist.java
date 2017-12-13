@@ -4,38 +4,48 @@ import java.util.ArrayList;
 
 public class keyandlist {
     ArrayList<Integer> key;
-    ArrayList<String> layor = new ArrayList<>();
+    ArrayList<String> layer = new ArrayList<>();
 
-    public keyandlist(ArrayList<Integer> key, ArrayList<String> layor) {
-        this.key = key;
-        this.layor = layor;
-    }
 
     public keyandlist(ArrayList<Integer> key, String w) {
         this.key = key;
-        layor.add(w);
+        layer.add(w);
     }
 
-    public keyandlist() {
-    }
-
+    /**
+     * gets the key
+     *
+     * @return ArrayList<>Integer</>
+     */
     public ArrayList<Integer> getKey() {
         return key;
     }
 
+    /**
+     * sets the key
+     *
+     * @param key
+     */
     public void setKey(ArrayList<Integer> key) {
         this.key = key;
     }
 
+    /**
+     * adds a word to the layer
+     *
+     * @param w
+     */
     public void addword(String w) {
-        layor.add(w);
+        layer.add(w);
     }
 
-    public ArrayList<String> getLayor() {
-        return layor;
+    /**
+     * gets the layer
+     *
+     * @return ArrayList<>String</>
+     */
+    public ArrayList<String> getLayer() {
+        return layer;
     }
 
-    public void setLayor(ArrayList<String> layor) {
-        this.layor = layor;
-    }
 }

@@ -9,6 +9,12 @@ public class reader {
     static int length = 15;
     ArrayList<String> words = new ArrayList<>();
 
+    /**
+     * reads from the text file
+     * deletes all the ones that dont have the correct length
+     * stores them into an arrayList
+     * @param length
+     */
     public reader(int length) {
 
         try {

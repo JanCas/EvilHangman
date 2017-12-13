@@ -14,9 +14,14 @@ public class Runner {
     public Runner() {
         Asker();
         f = new filter(guess, length);
-        runFilter();
+        run();
     }
 
+    /**
+     * does the initial asking of how long the word
+     * how many guesse
+     * and the first guess
+     */
     public void Asker() {
         System.out.println("Please enter how long you'd like your word to be");
         this.length = keyboard.nextInt();
@@ -34,7 +39,12 @@ public class Runner {
         //
     }
 
-    public void runFilter() {
+    /**
+     * runs the game, iterates x amount of times
+     * calls the needed methods to trick the user and make him miserble
+     * also stops the game if the user has guessed it right
+     */
+    public void run() {
         ArrayList<Integer> biggestkey = new ArrayList<>();
         for (int i = 0; i < guesses; i++) {
             biggestkey = f.getBiggest();
@@ -53,6 +63,11 @@ public class Runner {
         System.out.println("You ran out of guesses, shame on you");
     }
 
+    /**
+     * shows already used up guesses
+     * asks you for a guess
+     * prompts you to take a new one if you are making a repeat
+     */
     public void setGuess() {
         recordedguesses.add(guess);
         System.out.print("Already taken guesses: ");
@@ -68,6 +83,10 @@ public class Runner {
         }
     }
 
+    /**
+     * prints the word but in ------- format
+     * with only the letters you already guessed showing
+     */
     public void PrintWordInQuestion() {
         System.out.println("This is your word");
         for (String s : WordInQuestion)
@@ -75,6 +94,11 @@ public class Runner {
         System.out.println();
     }
 
+    /**
+     * turns the key (100010 whatever) into a word (b---b-) something like that
+     * and then at the next key, keeps the already discovered ones there and just adds if there are any new ones
+     * @param key
+     */
     public void FillFinalWord(ArrayList<Integer> key) {
         for (int i = 0; i < key.size(); i++) {
             if (WordInQuestion.size() < key.size())
