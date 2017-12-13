@@ -19,7 +19,7 @@ public class Runner {
 
     /**
      * does the initial asking of how long the word
-     * how many guesse
+     * how many guesses
      * and the first guess
      */
     public void Asker() {
@@ -29,7 +29,7 @@ public class Runner {
         System.out.println("Please enter how many guesses youd like to have");
         this.guesses = keyboard.nextInt();
 
-        System.out.println("Please enter your first guess");
+        System.out.println("Please enter your first guess (just one letter)");
         this.guess = keyboard.next();
         //
         //if (guess.length() > 1 || isNumeric(guess)) {
@@ -47,6 +47,7 @@ public class Runner {
     public void run() {
         ArrayList<Integer> biggestkey = new ArrayList<>();
         for (int i = 0; i < guesses; i++) {
+        	System.out.println();
             biggestkey = f.getBiggest();
             FillFinalWord(biggestkey);
             if (!WordInQuestion.contains("-")) {
