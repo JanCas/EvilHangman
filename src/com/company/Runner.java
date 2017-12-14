@@ -46,23 +46,34 @@ public class Runner {
      */
     public void run() {
         ArrayList<Integer> biggestkey = new ArrayList<>();
-        for (int i = 0; i < guesses; i++) {
-        	System.out.println();
-            biggestkey = f.getBiggest();
-            FillFinalWord(biggestkey);
-            if (!WordInQuestion.contains("-")) {
-                System.out.println("You won congratulations");
+        String playagain = "Y";
+        while (playagain.equalsIgnoreCase("y")) {
+            for (int i = 0; i < guesses; i++) {
+                System.out.println();
+                biggestkey = f.getBiggest();
+                FillFinalWord(biggestkey);
+                if (!WordInQuestion.contains("-")) {
+                    System.out.println("You won congratulations");
+                    PrintWordInQuestion();
+                    return;
+                }
+                f.layers.clear();
                 PrintWordInQuestion();
-                return;
+                System.out.println("You have " + (guesses - (i + 1)) + " guesses remaining");
+                setGuess();
+                f.setGuess(guess);
+                f.fill2();
             }
-            f.layers.clear();
-            PrintWordInQuestion();
-            System.out.println("You have " + (guesses - (i + 1)) + " remaining");
-            setGuess();
-            f.setGuess(guess);
-            f.fill2();
+            System.out.println("You ran out of guesses, shame on you");
+            System.out.println();
+            System.out.println("Do you want to play again (Y/N)");
+            playagain = keyboard.next();
+            if(playagain.equalsIgnoreCase("y")) {
+                Asker();
+                f = new filter(guess, length);
+                recordedguesses.clear();
+            }
         }
-        System.out.println("You ran out of guesses, shame on you");
     }
 
     /**
@@ -90,7 +101,7 @@ public class Runner {
      * with only the letters you already guessed showing
      */
     public void PrintWordInQuestion() {
-        System.out.println("This is your word, with the your correct guesses");
+        System.out.println("This is your word, with the correct guesses");
         for (String s : WordInQuestion)
             System.out.print(s);
         System.out.println();
@@ -99,6 +110,7 @@ public class Runner {
     /**
      * turns the key (100010 whatever) into a word (b---b-) something like that
      * and then at the next key, keeps the already discovered ones there and just adds if there are any new ones
+     *
      * @param key
      */
     public void FillFinalWord(ArrayList<Integer> key) {
@@ -109,7 +121,7 @@ public class Runner {
                 else
                     WordInQuestion.add(guess);
             else if (key.get(i) == 1)
-                    WordInQuestion.set(i, guess);
+                WordInQuestion.set(i, guess);
         }
     }
 

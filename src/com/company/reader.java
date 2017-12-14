@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class reader {
-    static int length = 15;
     ArrayList<String> words = new ArrayList<>();
+    int longestword;
 
     /**
      * reads from the text file
